@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="minusButton" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="currentValue" type="text" class="form-control text-center" value="1">
+                           <button id="plusButton"class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5 id="totalPrice" >$1219</h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="minusButtontwo" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input   id="currentValuetwo" type="text" class="form-control text-center" value="1">
+                           <button id="plusButtontwo" class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5 id="totalPricetwo"> $59</h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5 id="withoutTax">$1,278</h5>
+                        <h5 id="withTax">$0</h5>
+                        <h5 id="allTotal">$1,278</h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+                  
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <script>
+      //1st plus
+
+  const plusBtn = document.getElementById("plusButton");
+  plusBtn.addEventListener("click", function () {
+    const currentNumber = document.getElementById("currentValue");
+    const currentProduct = parseInt(currentNumber.value);
+    const updateProduct = currentProduct + 1;
+    currentNumber.value = updateProduct;
+
+   const phoneTk = document.getElementById("totalPrice");
+  const currentPrice = parseInt(phoneTk.innerText.replace(/[^0-9]/g, ""));
+  const updatePrice = currentPrice + 1200;
+  phoneTk.innerText = `$${updatePrice}`;
+
+  // Set the new price with the $ symbol
+ 
+ 
+   const phoneTktax = document.getElementById("withoutTax");
+    const currentPricetax = parseInt(phoneTktax.innerText.replace(/[^0-9]/g, ""));
+    const updatePricetax = currentPricetax + 1200;
+  // Set the new price with the $ symbol
+  phoneTktax.innerText = `$${updatePricetax}`;
+
+  //with Tax 
+  const phoneTktaxwith = document.getElementById("withTax");
+    const currentPricetaxwith = parseInt(phoneTktaxwith.innerText.replace(/[^0-9]/g, ""));
+    const updatePricetaxwith = currentPricetaxwith + 400;
+  // Set the new price with the $ symbol
+  phoneTktaxwith.innerText = `$${updatePricetaxwith}`;
+  //alltotal
+  const alTotal = document.getElementById("allTotal");
+    const subTotal = parseInt(allTotal.innerText.replace(/[^0-9]/g, ""));
+    const eveRyrhing =  updatePricetaxwith+updatePricetax;
+  // Set the new price with the $ symbol
+allTotal.innerText = `$${eveRyrhing}`;
+
+
+  });
+
+//1st minus
+   const minusBtn = document.getElementById("minusButton");
+   minusBtn.addEventListener("click", function () {
+    const currentNumber = document.getElementById("currentValue");
+    const currentProduct = parseInt(currentNumber.value); // Convert string to number
+    const updateProduct = currentProduct - 1;
+    currentNumber.value = updateProduct; // Correct way to update input value
+
+     const phoneTk = document.getElementById("totalPrice");
+    const currentPrice = parseInt(phoneTk.innerText.replace(/[^0-9]/g, ""));
+    const updatePrice = currentPrice - 1200;
+      phoneTk.innerText = `$${updatePrice}`;
+     const phoneTktax = document.getElementById("withoutTax");
+    const currentPricetax = parseInt(phoneTktax.innerText.replace(/[^0-9]/g, ""));
+    const updatePricetax = currentPricetax - 1200;
+  // Set the new price with the $ symbol
+    phoneTktax.innerText = `$${updatePricetax}`;
+
+  // Set the new price with the $ symbol
+  const phoneTktaxwith = document.getElementById("withTax");
+const currentPricetaxwith = parseInt(phoneTktaxwith.innerText.replace(/[^0-9]/g, ""));
+const updatePricetaxwith = currentPricetaxwith - 400; // Fix: use currentPricetaxwith
+phoneTktaxwith.innerText = `$${updatePricetaxwith}`;
+ 
+//alltotal
+ 
+  
+  });
+
+  //2ND plus 
+ const plusBtntwo = document.getElementById("plusButtontwo");
+
+ plusBtntwo.addEventListener("click", function () {
+  const currentNumbertwo = document.getElementById("currentValuetwo");
+  const currentProducttwo = parseInt(currentNumbertwo.value);
+  const updateProducttwo = currentProducttwo + 1;
+  currentNumbertwo.value = updateProducttwo;
+
+   const phoneTktwo = document.getElementById("totalPricetwo");
+  const currentPricetwo = parseInt(phoneTktwo.innerText.replace(/[^0-9]/g, ""));
+  const updatePricetwo = currentPricetwo + 59;
+
+  // Set the new price with the $ symbol
+  phoneTktwo.innerText = `$${updatePricetwo}`;
+
+     const phoneTktax = document.getElementById("withoutTax");
+    const currentPricetax = parseInt(phoneTktax.innerText.replace(/[^0-9]/g, ""));
+    const updatePricetax = currentPricetax + 1200;
+  // Set the new price with the $ symbol
+  phoneTktax.innerText = `$${updatePricetax}`;
+
+  const phoneTktaxwith = document.getElementById("withTax");
+    const currentPricetaxwith = parseInt(phoneTktaxwith.innerText.replace(/[^0-9]/g, ""));
+    const updatePricetaxwith = currentPricetaxwith + 20;
+  // Set the new price with the $ symbol
+  phoneTktaxwith.innerText = `$${updatePricetaxwith}`;
+ 
+  }); 
+  //2nd minus
+const minusBtntwo = document.getElementById("minusButtontwo");
+
+minusBtntwo.addEventListener("click", function () {
+  const currentNumbertwo = document.getElementById("currentValuetwo");
+  const currentProducttwo = parseInt(currentNumbertwo.value);
+  const updateProducttwo = currentProducttwo - 1;
+  currentNumbertwo.value = updateProducttwo;
+
+  const phoneTktwo = document.getElementById("totalPricetwo");
+  const currentPricetwo = parseInt(phoneTktwo.innerText.replace(/[^0-9]/g, ""));
+  const updatePricetwo = currentPricetwo - 59;
+
+  // Set the new price with the $ symbol
+  phoneTktwo.innerText = `$${updatePricetwo}`;
+
+  const phoneTktax = document.getElementById("withoutTax");
+    const currentPricetax = parseInt(phoneTktax.innerText.replace(/[^0-9]/g, ""));
+    const updatePricetax = currentPricetax - 1200;
+  // Set the new price with the $ symbol
+    phoneTktax.innerText = `$${updatePricetax}`;
+//withtax
+    const phoneTktaxwith = document.getElementById("withTax");
+    const currentPricetaxwith = parseInt(phoneTktaxwith.innerText.replace(/[^0-9]/g, ""));
+    const updatePricetaxwith = currentPricetaxwith - 20;
+  // Set the new price with the $ symbol
+  phoneTktaxwith.innerText = `$${updatePricetaxwith}`;
+});
+
+
+
+</script>
+
+</body>
+
+</html>
